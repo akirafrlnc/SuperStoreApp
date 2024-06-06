@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 
 class AllyController extends Controller
 {
-    public function products(Ally $ally)
+    public function products($url)
     {
+        $ally = Ally::where('url', $url)->first();
+
+        if (!$ally) {
+            return response()->json(['message' => 'Ally not found'], 404);
+        }
+
+        // Fetch all products if no specific categories are set for the ally
         $products = $ally->categories()->with('products')->get()->pluck('products')->flatten();
+
         return response()->json($products);
     }
         // Display a listing of allies

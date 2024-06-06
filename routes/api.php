@@ -23,6 +23,6 @@ Route::apiResource('/categories', CategoryController::class);
 Route::get('/categories/{category}/products', [CategoryController::class, 'products']);
 // Routes for Ally CRUD operations
 Route::apiResource('/allies', AllyController::class);
-
-Route::get('/ally/{ally:slug}/products', 'AllyController@products');
+Route::get('/ally/{url}/products', 'AllyController@products');
+// Route::get('/ally/{ally:slug}/products', 'AllyController@products');
 // Route::get('/api/products', 'ProductController@index');

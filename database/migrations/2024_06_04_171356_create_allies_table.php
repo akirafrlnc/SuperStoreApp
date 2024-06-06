@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('allies', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
-            $table->string('url')->unique();
+            $table->string('url')->unique();  // this is unique
             $table->timestamps();
         });
     }

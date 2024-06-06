@@ -6,24 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         if (!Schema::hasTable('ally_category')) {
             Schema::create('ally_category', function (Blueprint $table) {
-                $table->uuid('ally_id')->constrained('allies')->onDelete('cascade');
-                $table->uuid('category_id')->constrained('categories')->onDelete('cascade');
-                $table->timestamps();
+                $table->foreignId('ally_id')->constrained()->onDelete('cascade');
+                $table->foreignId('category_id')->constrained()->onDelete('cascade');
+                $table->primary(['ally_id', 'category_id']);
             });
         }
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('ally_category');
     }

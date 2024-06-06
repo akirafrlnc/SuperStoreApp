@@ -9,7 +9,7 @@ class Ally extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'url']; // Ensure 'url' is a unique identifier for each ally
+    protected $fillable = ['name', 'url']; 
 
     public function categories()
     {
